@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,18 +34,25 @@ public class EnemyScript : MonoBehaviour
     {
         if (forward)
         {
+            /*
             bool underwaypointCheck = index + 1 < waypointPos.Count;
             index = (underwaypointCheck) ? index + 1 : index - 1;
-            
-            if (!underwaypointCheck)
+                        if (!underwaypointCheck)
+            {
+                forward = false;
+            }*/
+            index++;
+            if (index == waypointPos.Count - 1) 
             {
                 forward = false;
             }
+
             // Move Character
             agent.SetDestination(waypointPos[index].position);
         }
         else
         {
+            /*
             bool underwaypointCheck = index - 1 > 0;
             index = (underwaypointCheck) ? index - 1 : 1;
 
@@ -52,6 +60,14 @@ public class EnemyScript : MonoBehaviour
             {
                 forward = true;
             }
+            */
+
+            index--;
+            if (index == 0)
+            {
+                forward = true;
+            }
+
             // Move Character
             agent.SetDestination(waypointPos[index].position);
         }
